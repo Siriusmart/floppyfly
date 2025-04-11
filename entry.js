@@ -3,6 +3,8 @@ let floppyfly = {
     displayName: "FloppyFly",
 
     onTick: () => {
+        if (pEntity == undefined) return;
+
         let config = modkeep.get("floppyfly", {}, (obj) => {
             obj.boost ??= 0.1;
             obj.boost2 ??= -0.1;
