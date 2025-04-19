@@ -50,6 +50,7 @@ let floppyfly = {
             ClientTickEvents.START_CLIENT_TICK,
             floppyfly.onTick,
             "floppyfly-onTick",
+            yarnwrap.Core
         );
     },
 
@@ -57,6 +58,7 @@ let floppyfly = {
         modtoggle.deregisterListener(
             ClientTickEvents.START_CLIENT_TICK,
             "floppyfly-onTick",
+            yarnwrap.Core
         );
     },
 };
