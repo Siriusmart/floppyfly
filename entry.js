@@ -3,8 +3,7 @@ let floppyfly = {
     displayName: "FloppyFly",
 
     onTick: () => {
-        if (pEntity == undefined) return;
-
+        if (pEntity == null) return;
         let config = modkeep.get("floppyfly", {}, (obj) => {
             obj.boost ??= 0.1;
             obj.boost2 ??= -0.1;
@@ -47,18 +46,18 @@ let floppyfly = {
 
     onActivate: () => {
         modtoggle.registerListener(
-            ClientTickEvents.START_CLIENT_TICK,
+            ClientTickEvents.START_WORLD_TICK,
             floppyfly.onTick,
             "floppyfly-onTick",
-            yarnwrap.Core
+            yarnwrap.Core,
         );
     },
 
     onDeactivate: () => {
         modtoggle.deregisterListener(
-            ClientTickEvents.START_CLIENT_TICK,
+            ClientTickEvents.START_WORLD_TICK,
             "floppyfly-onTick",
-            yarnwrap.Core
+            yarnwrap.Core,
         );
     },
 };
