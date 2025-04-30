@@ -3,7 +3,8 @@ let floppyfly = {
     displayName: "FloppyFly",
 
     onTick: () => {
-        if (pEntity == null) return;
+        let player = yarn.playerEntity;
+        if (player == null) return;
         let config = modkeep.get("floppyfly", {}, (obj) => {
             obj.boost ??= 0.1;
             obj.boost2 ??= -0.1;
@@ -12,12 +13,12 @@ let floppyfly = {
             return obj;
         });
 
-        let radianYaw = utils.toRadians(pEntity.yaw);
-        let speed = utils.playerVelocity().horizontalLength();
+        let radianYaw = utils.toRadians(player.yaw);
+        let speed = yarnutils.playerVelocity().horizontalLength();
 
-        if (pLiving.isFallFlying()) {
+        if (yarn.playerLiving.isFallFlying()) {
             if (speed > config.maxSpeed) {
-                pEntity.addVelocity(
+                player.addVelocity(
                     Math.sin(radianYaw) * -config.boost2,
                     0,
                     Math.cos(radianYaw) * config.boost2,
@@ -27,14 +28,14 @@ let floppyfly = {
             }
 
             if (speed < config.maxSpeed) {
-                if (mc.options().backKey().isPressed()) {
-                    pEntity.addVelocity(
+                if (yarn.client.options().backKey().isPressed()) {
+                    player.addVelocity(
                         Math.sin(radianYaw) * config.boost,
                         0,
                         Math.cos(radianYaw) * -config.boost,
                     );
-                } else if (pEntity.pitch > config.boostPitch) {
-                    pEntity.addVelocity(
+                } else if (player.pitch > config.boostPitch) {
+                    player.addVelocity(
                         Math.sin(radianYaw) * -config.boost,
                         0,
                         Math.cos(radianYaw) * config.boost,
@@ -57,7 +58,6 @@ let floppyfly = {
         modtoggle.deregisterListener(
             ClientTickEvents.START_WORLD_TICK,
             "floppyfly-onTick",
-            yarnwrap.Core,
         );
     },
 };
