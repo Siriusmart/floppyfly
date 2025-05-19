@@ -1,7 +1,7 @@
 {
     "name": "toggle-floppyfly",
     "version": "0.1.0",
-    "authors": [ "Sirius" ],
+    "authors": [ "Sirius<siriusmart>" ],
     "description": "Floppy's elytra fly.",
     "license": "AGPL-3.0-or-later",
     "keywords": [ "efly" ],
