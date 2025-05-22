@@ -16,11 +16,7 @@ let floppyfly = {
         let radianYaw = maths.toRadians(player.yaw);
         let speed = yarnutils.playerVelocity().horizontalLength();
 
-        let isFallFlying = new Packages.yarnwrap.entity.LivingEntity(
-            Packages.yarnwrap.client.MinecraftClient.getInstance().player().wrapperContained,
-        ).isFallFlying();
-
-        if (isFallFlying) {
+        if (yarn.playerLiving().isFallFlying()) {
             if (speed > config.maxSpeed) {
                 player.addVelocity(
                     Math.sin(radianYaw) * -config.boost2,
