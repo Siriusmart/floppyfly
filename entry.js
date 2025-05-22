@@ -3,7 +3,7 @@ let floppyfly = {
     displayName: "FloppyFly",
 
     onTick: () => {
-        let player = yarn.playerEntity;
+        let player = yarn.playerEntity();
         if (player == null) return;
         let config = modkeep.get("floppyfly", {}, (obj) => {
             obj.boost ??= 0.1;
@@ -16,7 +16,11 @@ let floppyfly = {
         let radianYaw = maths.toRadians(player.yaw);
         let speed = yarnutils.playerVelocity().horizontalLength();
 
-        if (yarn.playerLiving.isFallFlying()) {
+        let isFallFlying = new Packages.yarnwrap.entity.LivingEntity(
+            Packages.yarnwrap.client.MinecraftClient.getInstance().player().wrapperContained,
+        ).isFallFlying();
+
+        if (isFallFlying) {
             if (speed > config.maxSpeed) {
                 player.addVelocity(
                     Math.sin(radianYaw) * -config.boost2,
@@ -28,7 +32,7 @@ let floppyfly = {
             }
 
             if (speed < config.maxSpeed) {
-                if (yarn.client.options().backKey().isPressed()) {
+                if (yarn.client().options().backKey().isPressed()) {
                     player.addVelocity(
                         Math.sin(radianYaw) * config.boost,
                         0,

@@ -12,7 +12,7 @@
         "toggle": "0.1.0",
         "maths": "0.1.0",
         "yarnutils": "0.1.0",
-        "yarn": "0.1.0"
+        "yarn": "0.1.1"
     },
 
     "repository": "https://github.com/Siriusmart/toggle-floppyfly",
