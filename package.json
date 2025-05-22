@@ -4,7 +4,7 @@
     "authors": [ "Sirius<siriusmart>" ],
     "description": "Floppy's elytra fly.",
     "license": "AGPL-3.0-or-later",
-    "keywords": [ "efly" ],
+    "keywords": [ "efly", "illegal" ],
 
     "entry": "entry.js",
     "dependencies": {
