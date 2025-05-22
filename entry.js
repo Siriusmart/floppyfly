@@ -13,7 +13,7 @@ let floppyfly = {
             return obj;
         });
 
-        let radianYaw = utils.toRadians(player.yaw);
+        let radianYaw = maths.toRadians(player.yaw);
         let speed = yarnutils.playerVelocity().horizontalLength();
 
         if (yarn.playerLiving.isFallFlying()) {
