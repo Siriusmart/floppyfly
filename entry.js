@@ -2,7 +2,7 @@ let floppyfly = {
     name: "floppyfly",
     displayName: "FloppyFly",
 
-    onTick: () => {
+    onTick: ((isFallFlying) => () => {
         let player = yarn.playerEntity();
         if (player == null) return;
         let config = modkeep.get("floppyfly", {}, (obj) => {
@@ -16,7 +16,7 @@ let floppyfly = {
         let radianYaw = maths.toRadians(player.yaw);
         let speed = yarnutils.playerVelocity().horizontalLength();
 
-        if (yarn.playerLiving().isFallFlying()) {
+        if (yarn.playerLiving()[isFallFlying]()) {
             if (speed > config.maxSpeed) {
                 player.addVelocity(
                     Math.sin(radianYaw) * -config.boost2,
@@ -43,7 +43,7 @@ let floppyfly = {
                 }
             }
         }
-    },
+    })(yarn.playerLiving().isFallFlying ? "isFallFlying" : "isGliding"),
 
     onActivate: () => {
         modtoggle.registerListener(

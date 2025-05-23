@@ -1,6 +1,6 @@
 {
     "name": "toggle-floppyfly",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "authors": [ "Sirius<siriusmart>" ],
     "description": "Floppy's elytra fly.",
     "license": "AGPL-3.0-or-later",
@@ -11,7 +11,7 @@
         "keep": "0.1.0",
         "toggle": "0.1.0",
         "maths": "0.1.0",
-        "yarnutils": "0.1.0",
+        "yarnutils": "0.1.1",
         "yarn": "0.1.1"
     },
 
